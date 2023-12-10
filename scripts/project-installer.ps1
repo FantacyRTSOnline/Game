@@ -123,3 +123,6 @@ function Invoke-Installer {
         Exit 1
     }
 }
+
+# Run the installer
+Invoke-Installer
