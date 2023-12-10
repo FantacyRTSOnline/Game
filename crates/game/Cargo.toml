@@ -7,3 +7,7 @@ edition = "2021"
 homepage = ""
 readme = "../../README.md"
 repository = ""
+
+
+[dependencies]
+engine = { path = "../engine" }
