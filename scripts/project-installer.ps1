@@ -89,13 +89,13 @@ function Invoke-Installer {
 
         $windowsVersion = [System.Environment]::OSVersion.Version
 
-        if ($windowsVersion -ge '10.0' -and $windowsVersion -lt '10.1') {
+        if ($windowsVersion -ge (New-Object System.Version "10.0") -and $windowsVersion -lt (New-Object System.Version "10.1")) {
             Write-Host "Windows 10 detected. Installing necessary dependencies..."
-            Invoke-Win10-Installer
+            # Invoke-Win10-Installer
         }
-        elseif ($windowsVersion -ge '10.1' -and $windowsVersion -lt '11.0') {
+        elseif ($windowsVersion -ge (New-Object System.Version "10.1") -and $windowsVersion -lt (New-Object System.Version "11.0")) {
             Write-Host "Windows 11 detected. Installing necessary dependencies..."
-            Invoke-Win11-Installer
+            # Invoke-Win11-Installer
         }
         else {
             Write-Host "Unsupported windows version detected. Exiting..."
