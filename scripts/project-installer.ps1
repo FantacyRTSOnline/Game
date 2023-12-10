@@ -75,8 +75,6 @@ function Invoke-Installer {
         Invoke-Rustup-Installer
 
         Write-Host "Project installation complete."
-        Write-Host "To run the project, run the following command in the project directory:" 
-        Write-Host "cargo run"
     }
     catch {
         Write-Host "An unexpected error occurred: $_"
