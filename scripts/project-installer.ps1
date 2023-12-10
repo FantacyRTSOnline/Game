@@ -6,7 +6,7 @@
 # ---------------------------------------------------------- #
 function Invoke-Win11-Installer {
     try {
-        Start-Process -FilePath "winget" -ArgumentList "install Microsoft.VisualStudio.2022.BuildTools --force --override '--wait --passive --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22000'" -Wait -NoNewWindow -ErrorAction Stop
+        Start-Process -FilePath "winget" -ArgumentList "install Microsoft.VisualStudio.2022.BuildTools --force --override '--wait --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22000'" -Wait -NoNewWindow -ErrorAction Stop
         Write-Host "Windows 11 build tools installed successfully."
     }
     catch {
@@ -20,7 +20,7 @@ function Invoke-Win11-Installer {
 # ---------------------------------------------------------- #
 function Invoke-Win10-Installer {
     try {
-        Start-Process -FilePath "winget" -ArgumentList "install Microsoft.VisualStudio.2022.BuildTools --force --override '--wait --passive --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows10SDK'" -Wait -NoNewWindow -ErrorAction Stop
+        Start-Process -FilePath "winget" -ArgumentList "install Microsoft.VisualStudio.2022.BuildTools --force --override '--wait --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows10SDK'" -Wait -NoNewWindow -ErrorAction Stop
         Write-Host "Windows 10 build tools installed successfully."
     }
     catch {
@@ -103,7 +103,7 @@ function Invoke-Installer {
         }
 
         Write-Host "Building the project..."
-        Start-Process "cargo" -ArgumentList "build" -Wait -NoNewWindow -ErrorAction Stop
+        Start-Process "cargo" -ArgumentList "build" -NoNewWindow -ErrorAction Stop
 
         if ($LASTEXITCODE -eq 0) {
             Write-Host "Build successful."
