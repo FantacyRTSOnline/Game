@@ -2,29 +2,15 @@
 # By: ThatGuyJamal
 # Date: 12/10/2023
 
-# ? Run the windows 11 installer
+# ? Run the windows installer
 # ---------------------------------------------------------- #
-function Invoke-Win11-Installer {
+function Invoke-Win-Installer {
     try {
         Start-Process -FilePath "winget" -ArgumentList "install Microsoft.VisualStudio.2022.BuildTools --force --override '--wait --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22000'" -Wait -NoNewWindow -ErrorAction Stop
-        Write-Host "Windows 11 build tools installed successfully."
+        Write-Host "Windows build tools installed successfully."
     }
     catch {
-        Write-Host "Windows 11 build tools failed to install."
-        Write-Host "Exiting due to an error: $_"
-        Exit 1
-    }
-}
-
-# ? Run the windows 10 installer
-# ---------------------------------------------------------- #
-function Invoke-Win10-Installer {
-    try {
-        Start-Process -FilePath "winget" -ArgumentList "install Microsoft.VisualStudio.2022.BuildTools --force --override '--wait --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows10SDK'" -Wait -NoNewWindow -ErrorAction Stop
-        Write-Host "Windows 10 build tools installed successfully."
-    }
-    catch {
-        Write-Host "Windows 10 build tools failed to install."
+        Write-Host "Windows build tools failed to install."
         Write-Host "Exiting due to an error: $_"
         Exit 1
     }
@@ -86,33 +72,7 @@ function Invoke-Installer {
 
         Invoke-Git-Clone
         Invoke-Rustup-Installer
-
-        $windowsVersion = [System.Environment]::OSVersion.Version
-
-        if ($windowsVersion -ge (New-Object System.Version "10.0") -and $windowsVersion -lt (New-Object System.Version "10.1")) {
-            Write-Host "Windows 10 detected. Installing necessary dependencies..."
-            # Invoke-Win10-Installer
-        }
-        elseif ($windowsVersion -ge (New-Object System.Version "10.1") -and $windowsVersion -lt (New-Object System.Version "11.0")) {
-            Write-Host "Windows 11 detected. Installing necessary dependencies..."
-            # Invoke-Win11-Installer
-        }
-        else {
-            Write-Host "Unsupported windows version detected. Exiting..."
-            Exit 1
-        }
-
-        Write-Host "Building the project..."
-        Start-Process "cargo" -ArgumentList "build" -NoNewWindow -ErrorAction Stop
-
-        if ($LASTEXITCODE -eq 0) {
-            Write-Host "Build successful."
-        }
-        else {
-            Write-Host "Build failed."
-            Write-Host "Exiting..."
-            Exit 1
-        }
+        Invoke-Win-Installer
 
         Write-Host "Project installation complete."
         Write-Host "To run the project, run the following command in the project directory:" 
