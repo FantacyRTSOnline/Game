@@ -7,5 +7,9 @@ name = "common"
 version = "0.1.0"
 
 [[package]]
+name = "engine"
+version = "0.1.0"
+
+[[package]]
 name = "rts-fantacy-game"
 version = "0.0.0"
