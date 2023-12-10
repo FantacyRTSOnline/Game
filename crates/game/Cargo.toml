@@ -1,0 +1,9 @@
+[package]
+name = "rts-fantacy-game"
+description = "A real-time strategy game with a fantacy theme."
+version = "0.0.0"
+authors = ["Jamal <thatguyjamalbiz@gmail.com>"]
+edition = "2021"
+homepage = ""
+readme = "../../README.md"
+repository = ""
