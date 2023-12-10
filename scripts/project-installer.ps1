@@ -71,8 +71,8 @@ function Invoke-Installer {
         Write-Host "Starting project the installer..."
 
         Invoke-Git-Clone
-        Invoke-Rustup-Installer
         Invoke-Win-Installer
+        Invoke-Rustup-Installer
 
         Write-Host "Project installation complete."
         Write-Host "To run the project, run the following command in the project directory:" 
