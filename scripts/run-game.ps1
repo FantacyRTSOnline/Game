@@ -4,4 +4,5 @@
 
 Write-Host "Running game in dev mode..."
 
-cargo run --features bevy/dynamic_linking
+# cargo run --features bevy/dynamic_linking
+cargo run
