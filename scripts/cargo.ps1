@@ -18,6 +18,14 @@ function RunCargoCommand {
             Invoke-CargoTest
             break
         }
+        "rm" {
+            Invoke-CargoRemove
+            break
+        }
+        "add" {
+            Invoke-CargoAdd
+            break
+        }
         default {
             Write-Host "Invalid command. Please enter 'crate' or 'test'."
         }
@@ -44,6 +52,24 @@ function Invoke-CargoTest {
     Write-Host "Running cargo test command..."
     # Invoke-Expression "cargo test" or your logic to run cargo test
     Invoke-Expression "cargo test"
+}
+
+# ? Cargo Remove package
+# ---------------------------------------------------------- #
+function Invoke-CargoRemove {
+    $packagePath = Read-Host -Prompt 'Input the crate dir you wish to modify'
+    $crate = Read-Host -Prompt 'Input the package you wish to remove'
+
+    cargo remove $crate --package $packagePath    
+}
+
+# ? Cargo Add package
+# ---------------------------------------------------------- #
+function Invoke-CargoAdd {
+    $packagePath = Read-Host -Prompt 'Input the crate dir you wish to modify'
+    $crate = Read-Host -Prompt 'Input the package you wish to add'
+
+    cargo add $crate --package $packagePath    
 }
 
 # Prompt user for command input
