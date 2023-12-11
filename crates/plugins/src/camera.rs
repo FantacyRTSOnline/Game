@@ -1,7 +1,4 @@
-use bevy::app::{App, Plugin};
-use bevy::ecs::system::Commands;
-use bevy::core_pipeline::core_3d::Camera3dBundle;
-use bevy::transform::components::Transform;
+use bevy::prelude::*;
 
 const CAMERA_DISTANCE: f32 = 80.0;
 
