@@ -11,7 +11,7 @@ impl Plugin for CameraPlugin
     {
         app.add_plugins(PanOrbitCameraPlugin);
         app.add_systems(Startup, spawn_camera);
-        app.add_systems(Update, toggle_camera_controls_system);
+        // app.add_systems(Update, toggle_camera_controls_system);
     }
 }
 
@@ -33,7 +33,7 @@ fn spawn_camera(mut commands: Commands)
             alpha_lower_limit: Some(-TAU / 4.0),
             beta_upper_limit: Some(TAU / 3.0),
             beta_lower_limit: Some(-TAU / 3.0),
-            zoom_upper_limit: Some(5.0),
+            zoom_upper_limit: Some(10.0),
             zoom_lower_limit: Some(1.0),
             // Adjust sensitivity of controls
             orbit_sensitivity: 1.5,
@@ -41,18 +41,19 @@ fn spawn_camera(mut commands: Commands)
             zoom_sensitivity: 0.5,
             // Allow the camera to go upside down
             allow_upside_down: true,
-            // Change the controls (these match Blender)
+            // Change the controls
             button_orbit: MouseButton::Right,
             button_pan: MouseButton::Right,
             modifier_pan: Some(KeyCode::ShiftLeft),
             // Reverse the zoom direction
-            reversed_zoom: true,
+            reversed_zoom: false,
             ..default()
         },
     ));
 }
 
-// Press 'T' to toggle the camera controls
+// Press 'T' to toggle the camera controls (disabled the camera system)
+#[allow(dead_code)]
 fn toggle_camera_controls_system(key_input: Res<Input<KeyCode>>, mut pan_orbit_query: Query<&mut PanOrbitCamera>)
 {
     if key_input.just_pressed(KeyCode::T) {
