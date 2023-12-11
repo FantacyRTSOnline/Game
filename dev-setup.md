@@ -12,4 +12,4 @@ Then to run the game from the command line in the root of the project:
 ./scripts/run-game.ps1
 ```
 
-Currently, development is done on windows first. The game will support linux second and mac third. But all build tooling is around windows until further notice.
+Currently, development is done on windows and supports windows natively. Linux and Mac support *might* come but it is not a high priority at the moment.
