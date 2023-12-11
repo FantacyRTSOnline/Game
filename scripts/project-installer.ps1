@@ -70,6 +70,9 @@ function Invoke-Rustup-Installer {
     try {
         if (!(Get-Command rustup -ErrorAction SilentlyContinue)) {
             Start-Process "winget" -ArgumentList "install Rust.rustup" -Wait -NoNewWindow -ErrorAction Stop
+            # Refresh the environment variables in the current session
+            $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
+            Write-Host "Rustup has been installed, continuing..."
             Start-Process "cargo" -ArgumentList "install -f cargo-binutils" -Wait -NoNewWindow -ErrorAction Stop
             Start-Process "rustup" -ArgumentList "component add llvm-tools-preview" -Wait -NoNewWindow -ErrorAction Stop
             Write-Host "Rustup has been installed, continuing..."
