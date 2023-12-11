@@ -74,6 +74,7 @@ function Invoke-Rustup-Installer {
             $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
             Write-Host "Rustup has been installed, continuing..."
             Start-Process "cargo" -ArgumentList "install cargo-binutils" -Wait -NoNewWindow -ErrorAction Stop
+            Start-Process "cargo" -ArgumentList "install cargo-watch" -Wait -NoNewWindow -ErrorAction Stop
             Start-Process "rustup" -ArgumentList "component add llvm-tools-x86_64-pc-windows-msvc" -Wait -NoNewWindow -ErrorAction Stop
             Write-Host "Rustup has been installed, continuing..."
         }
