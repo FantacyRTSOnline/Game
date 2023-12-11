@@ -34,7 +34,7 @@ features = [
     "bevy_audio",     # Builtin audio
     # "bevy_gilrs",         # Gamepad input support
     "bevy_scene",         # Scenes management
-    # "bevy_winit",         # Window management (cross-platform Winit backend)
+    "bevy_winit",         # Window management (cross-platform Winit backend)
     "bevy_render",        # Rendering framework core
     "bevy_core_pipeline", # Common rendering abstractions
     # "bevy_gizmos",        # Support drawing debug lines and shapes
