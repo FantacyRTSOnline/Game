@@ -25,7 +25,6 @@ opt-level = 3
 
 [workspace.dependencies.bevy]
 version = "0.12.1"
-# All features are disabled by default to increase build speed in dev, only enable what we need for the game
 default-features = false
 features = [
     #? Bevy functionality:
@@ -94,7 +93,8 @@ features = [
     # "bevy_dynamic_plugin", # (Desktop) support for loading of `DynamicPlugin`s
 
     #? Development/Debug features:
-    # "dynamic_linking",    # Dynamic linking for faster compile-times
+    #! todo - fix rust-analizer target cache invalidation bug ( to avoid long compile times with rust analyzer, this is enabled until release ).
+    "dynamic_linking",    # Dynamic linking for faster compile-times
     # "trace",              # Enable tracing for performance measurement
     # "detailed_trace",     # Make traces more verbose
     # "trace_tracy",        # Tracing using `tracy`
