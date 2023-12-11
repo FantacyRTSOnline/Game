@@ -3,4 +3,5 @@
 # Date: 12/10/2023
 
 Write-Host "Running game..."
-Start-Process "cargo" -ArgumentList "run --features bevy/dynamic_linking" -NoNewWindow -ErrorAction Stop
+
+cargo run --features bevy/dynamic_linking
