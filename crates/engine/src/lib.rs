@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use plugins::camera::CameraPlugin;
+use plugins::world::WorldPlugin;
 
 #[allow(non_snake_case)]
 pub fn RunEngine()
@@ -8,7 +8,7 @@ pub fn RunEngine()
     // Built ins
     .add_plugins(DefaultPlugins)
     // Custom plugins
-    .add_plugins(CameraPlugin)
+    .add_plugins(WorldPlugin)
     //
     .run();
 }

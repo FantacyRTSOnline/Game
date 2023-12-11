@@ -94,7 +94,7 @@ features = [
 
     #? Development/Debug features:
     #! todo - fix rust-analizer target cache invalidation bug ( to avoid long compile times with rust analyzer, this is enabled until release ).
-    "dynamic_linking",    # Dynamic linking for faster compile-times
+    # "dynamic_linking",    # Dynamic linking for faster compile-times
     # "trace",              # Enable tracing for performance measurement
     # "detailed_trace",     # Make traces more verbose
     # "trace_tracy",        # Tracing using `tracy`
