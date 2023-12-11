@@ -2,6 +2,6 @@
 # By: ThatGuyJamal
 # Date: 12/10/2023
 
-Write-Host "Running game..."
+Write-Host "Running game in dev mode..."
 
 cargo run --features bevy/dynamic_linking
