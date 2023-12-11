@@ -21,21 +21,20 @@ pub mod world
     /// set up a simple 3D scene
     fn setup(mut commands: Commands, mut meshes: ResMut<Assets<Mesh>>, mut materials: ResMut<Assets<StandardMaterial>>)
     {
-        // circular base
+        // Ground
         commands.spawn(PbrBundle {
-            mesh: meshes.add(shape::Circle::new(4.0).into()),
-            material: materials.add(Color::WHITE.into()),
-            transform: Transform::from_rotation(Quat::from_rotation_x(-std::f32::consts::FRAC_PI_2)),
+            mesh: meshes.add(shape::Plane::from_size(5.0).into()),
+            material: materials.add(Color::rgb(0.3, 0.5, 0.3).into()),
             ..default()
         });
-        // cube
+        // Cube
         commands.spawn(PbrBundle {
             mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
-            material: materials.add(Color::rgb_u8(124, 144, 255).into()),
+            material: materials.add(Color::rgb(0.8, 0.7, 0.6).into()),
             transform: Transform::from_xyz(0.0, 0.5, 0.0),
             ..default()
         });
-        // light
+        // Light
         commands.spawn(PointLightBundle {
             point_light: PointLight {
                 intensity: 1500.0,
