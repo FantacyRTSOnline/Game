@@ -43,7 +43,7 @@ features = [
     "bevy_text", # Text/font rendering
     "bevy_ui",   # UI toolkit
     "animation", # Animation support
-    # "tonemapping_luts",   # Support different camera Tonemapping modes (enables KTX2+zstd)
+    "tonemapping_luts",   # Support different camera Tonemapping modes (enables KTX2+zstd)
     "default_font", # Embed a minimal default font for text/UI
 
     #? File formats:
