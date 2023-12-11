@@ -1,5 +1,6 @@
 use engine::RunEngine;
 
-fn main() {
+fn main()
+{
     RunEngine()
 }
