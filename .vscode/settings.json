@@ -2,5 +2,4 @@
 	"rust-analyzer.cargo.extraEnv": {
 		"RUSTFLAGS": "-Clinker=rust-lld.exe"
 	},
-	"rust-analyzer.cargo.features": ["bevy/dynamic_linking"],
 }
