@@ -6,8 +6,24 @@
 # ---------------------------------------------------------- #
 function Invoke-Win-Installer {
     try {
-        Start-Process -FilePath "winget" -ArgumentList "install Microsoft.VisualStudio.2022.BuildTools --force --override '--wait --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22000'" -Wait -NoNewWindow -ErrorAction Stop
-        Write-Host "Windows build tools installed successfully."
+        $userInput = Read-Host "Please enter your current Windows version (10 or 11):"
+
+        if ($userInput -eq 10) {
+            Write-Host "Installing Windows 10 build tools..."
+            # Windows 10 SDK
+            # winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--wait --passive --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows10SDK.22200"
+            Start-Process -FilePath "winget" -ArgumentList "install Microsoft.VisualStudio.2022.BuildTools --force --override '--wait --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows10SDK.22200'" -Wait -NoNewWindow -ErrorAction Stop
+            Write-Host "Windows 10 build tools installed successfully."
+        } elseif ($userInput -eq 11) {
+            Write-Host "Installing Windows 11 build tools..."
+            # Windows 11 SDK
+            # winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--wait --passive --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22621"
+            Start-Process -FilePath "winget" -ArgumentList "install Microsoft.VisualStudio.2022.BuildTools --force --override '--wait --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22621'" -Wait -NoNewWindow -ErrorAction Stop
+            Write-Host "Windows 11 build tools installed successfully."
+        } else {
+            Write-Host "Invalid input, please try again. You can only enter the numbers (10 or 11) nothing else!"
+            Invoke-Win-Installer
+        }
     }
     catch {
         Write-Host "Windows build tools failed to install."
@@ -71,8 +87,8 @@ function Invoke-Installer {
         Write-Host "Starting project the installer..."
 
         Invoke-Git-Clone
-        Invoke-Win-Installer
         Invoke-Rustup-Installer
+        Invoke-Win-Installer
 
         Write-Host "Project installation complete."
     }
