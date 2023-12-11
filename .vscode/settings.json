@@ -4,6 +4,7 @@
 	},
 	"rust-analyzer.rust.analyzerTargetDir": true,
 	"cSpell.words": [
-		"consts"
+		"consts",
+		"panorbit"
 	]
 }
