@@ -14,13 +14,15 @@ function Invoke-Win-Installer {
             # winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--wait --passive --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows10SDK.22200"
             Start-Process -FilePath "winget" -ArgumentList "install Microsoft.VisualStudio.2022.BuildTools --force --override '--wait --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows10SDK.22200'" -Wait -NoNewWindow -ErrorAction Stop
             Write-Host "Windows 10 build tools installed successfully."
-        } elseif ($userInput -eq 11) {
+        }
+        elseif ($userInput -eq 11) {
             Write-Host "Installing Windows 11 build tools..."
             # Windows 11 SDK
             # winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--wait --passive --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22621"
             Start-Process -FilePath "winget" -ArgumentList "install Microsoft.VisualStudio.2022.BuildTools --force --override '--wait --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22621'" -Wait -NoNewWindow -ErrorAction Stop
             Write-Host "Windows 11 build tools installed successfully."
-        } else {
+        }
+        else {
             Write-Host "Invalid input, please try again. You can only enter the numbers (10 or 11) nothing else!"
             Invoke-Win-Installer
         }
@@ -68,6 +70,8 @@ function Invoke-Rustup-Installer {
     try {
         if (!(Get-Command rustup -ErrorAction SilentlyContinue)) {
             Start-Process "winget" -ArgumentList "install Rust.rustup" -Wait -NoNewWindow -ErrorAction Stop
+            Start-Process "cargo" -ArgumentList "install -f cargo-binutils" -Wait -NoNewWindow -ErrorAction Stop
+            Start-Process "rustup" -ArgumentList "component add llvm-tools-preview" -Wait -NoNewWindow -ErrorAction Stop
             Write-Host "Rustup has been installed, continuing..."
         }
         else {
