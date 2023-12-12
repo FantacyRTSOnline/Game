@@ -27,7 +27,7 @@ function RunCargoCommand {
             break
         }
         default {
-            Write-Host "Invalid command. Please enter 'crate' or 'test'."
+            Write-Host "Invalid command. Please enter 'crate' / 'test' / 'rm' / 'add'"
         }
     }
 }
@@ -73,6 +73,6 @@ function Invoke-CargoAdd {
 }
 
 # Prompt user for command input
-$enteredCommand = Read-Host -Prompt 'Enter a command (crate/test)'
+$enteredCommand = Read-Host -Prompt 'Enter a command (crate/test/rm/add)'
 
 RunCargoCommand -command $enteredCommand
