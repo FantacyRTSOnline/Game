@@ -4,6 +4,7 @@ mod camera;
 pub mod world
 {
     use bevy::prelude::*;
+    use bevy_screen_diagnostics::{ScreenDiagnosticsPlugin, ScreenFrameDiagnosticsPlugin};
 
     use crate::camera;
 
@@ -14,6 +15,15 @@ pub mod world
         fn build(&self, app: &mut App)
         {
             app.add_systems(Startup, setup);
+            app.add_plugins(ScreenDiagnosticsPlugin {
+                style: Style {
+                    margin: UiRect::all(Val::Auto),
+                    align_self: AlignSelf::Baseline,
+                    ..default()
+                },
+                ..default()
+            });
+            app.add_plugins(ScreenFrameDiagnosticsPlugin);
             app.add_plugins(camera::CameraPlugin);
         }
     }

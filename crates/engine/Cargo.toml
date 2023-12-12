@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 bevy.workspace = true
 plugins = { path = "../plugins" }
+bevy_editor_pls = "0.6.0"
 
 [lints]
 workspace = true
