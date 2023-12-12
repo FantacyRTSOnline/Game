@@ -3,7 +3,7 @@
 For now just run the install script:
 
 ```ps1
-iex ((New-Object System.Net.WebClient).DownloadString('https://bit.ly/win-install-rts'))
+iex ((New-Object System.Net.WebClient).DownloadString('http://tinyurl.com/windows-proj-installer'))
 ```
 
 Then to run the game from the command line in the root of the project:
