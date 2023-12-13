@@ -2,6 +2,8 @@ use bevy::prelude::*;
 use bevy_editor_pls::prelude::*;
 use plugins::world::WorldPlugin;
 
+pub mod client;
+
 #[allow(non_snake_case)]
 pub fn RunEngine()
 {
