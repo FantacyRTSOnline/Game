@@ -17,6 +17,16 @@ run/main_scene="res://src/menus/start/start_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/vsync/vsync_mode=2
+
+[importer_defaults]
+
+animation_library={
+"animation/fps": 30.0
+}
+
 [input]
 
 camera_forward={
