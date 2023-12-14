@@ -1,6 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://7d65xxpfs1jo"]
+[gd_scene load_steps=4 format=3 uid="uid://7d65xxpfs1jo"]
 
 [ext_resource type="Script" path="res://src/menus/start/start_menu.gd" id="1_2yojf"]
+
+[sub_resource type="FontFile" id="FontFile_0v53q"]
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="FontFile_ocg1e"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -31,6 +55,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = SubResource("FontFile_0v53q")
 theme_override_font_sizes/font_size = 50
 text = "Fantasy RTS Online"
 horizontal_alignment = 1
@@ -47,33 +72,39 @@ layout_mode = 2
 
 [node name="Tutorial" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_ocg1e")
 disabled = true
 text = "Tutorial"
 
 [node name="Campaign" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_ocg1e")
 disabled = true
 text = "Campaign"
 
 [node name="Single" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Play aganst AI in a scrimmage match"
+theme_override_fonts/font = SubResource("FontFile_ocg1e")
 text = "Single Player"
 
 [node name="Multiplayer" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_ocg1e")
 disabled = true
 text = "Multiplayer"
 
 [node name="Options" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Configure game settings"
+theme_override_fonts/font = SubResource("FontFile_ocg1e")
 disabled = true
 text = "Options"
 
 [node name="Quit" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Close the game"
+theme_override_fonts/font = SubResource("FontFile_ocg1e")
 text = "Quit"
 
 [connection signal="pressed" from="Buttons/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
