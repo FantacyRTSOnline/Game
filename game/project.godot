@@ -10,8 +10,10 @@ config_version=5
 
 [application]
 
-config/name="rts-game"
-run/main_scene="res://world.tscn"
+config/name="FantasyRtsOnline"
+config/description="Forge your empire amidst the chaos of an otherworldly realm in this gripping fantasy RTS game. Harness the might of demons and command majestic dragons as you navigate a rich, treacherous landscape teeming with ancient magic and formidable foes. Strategize your conquest, leading powerful armies and mystical creatures into epic battles that shape the fate of the realms. Unleash devastating spells and summon mythical beasts, forging alliances or conquering enemies in a quest for dominance. With breathtaking visuals and immersive gameplay, become the architect of your destiny, where cunning strategy and mythical forces collide in an unending quest for supremacy."
+config/version="0.1.0"
+run/main_scene="res://src/menus/start/start_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
