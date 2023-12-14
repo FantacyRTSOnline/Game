@@ -68,6 +68,7 @@ text = "Multiplayer"
 [node name="Options" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Configure game settings"
+disabled = true
 text = "Options"
 
 [node name="Quit" type="Button" parent="Buttons/VBoxContainer"]
