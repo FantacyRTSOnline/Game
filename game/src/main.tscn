@@ -47,23 +47,36 @@ grow_vertical = 2
 script = ExtResource("1_6crjc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.101961, 0.2, 0.262745, 1)
 
-[node name="Title" type="MarginContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = 352.0
-offset_top = 184.0
-offset_right = 813.0
-offset_bottom = 253.0
+alignment = 1
+
+[node name="Title" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
 theme = SubResource("Theme_g2u1v")
+theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Title"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/Title"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Title/VBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Title/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 10
@@ -72,57 +85,55 @@ theme_override_font_sizes/font_size = 50
 text = "Fantasy RTS Online"
 horizontal_alignment = 1
 
-[node name="Buttons" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_left = 529.0
-offset_top = 325.0
-offset_right = 636.0
-offset_bottom = 531.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+[node name="Buttons" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_top = 20
 
-[node name="Tutorial" type="Button" parent="Buttons/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Tutorial" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontFile_ocg1e")
 disabled = true
 text = "Tutorial"
 
-[node name="Campaign" type="Button" parent="Buttons/VBoxContainer"]
+[node name="Campaign" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontFile_ocg1e")
 disabled = true
 text = "Campaign"
 
-[node name="Single" type="Button" parent="Buttons/VBoxContainer"]
+[node name="Single" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Play aganst AI in a scrimmage match"
 theme_override_fonts/font = SubResource("FontFile_ocg1e")
 text = "Single Player"
 
-[node name="Multiplayer" type="Button" parent="Buttons/VBoxContainer"]
+[node name="Multiplayer" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontFile_ocg1e")
 disabled = true
 text = "Multiplayer"
 
-[node name="Options" type="Button" parent="Buttons/VBoxContainer"]
+[node name="Options" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Configure game settings"
 theme_override_fonts/font = SubResource("FontFile_ocg1e")
 disabled = true
 text = "Options"
 
-[node name="Quit" type="Button" parent="Buttons/VBoxContainer"]
+[node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer/Buttons/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "Close the game"
 theme_override_fonts/font = SubResource("FontFile_ocg1e")
 text = "Quit"
 
-[connection signal="pressed" from="Buttons/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/Campaign" to="." method="_on_campaign_pressed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/Single" to="." method="_on_campaign_pressed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/Single" to="." method="_on_single_pressed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/VBoxContainer/Campaign" to="." method="_on_campaign_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/VBoxContainer/Single" to="." method="_on_campaign_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/VBoxContainer/Single" to="." method="_on_single_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Buttons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
