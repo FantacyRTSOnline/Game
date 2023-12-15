@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://7d65xxpfs1jo"]
 
-[ext_resource type="Script" path="res://src/menus/start/start_menu.gd" id="1_2yojf"]
+[ext_resource type="Script" path="res://src/main.gd" id="1_6crjc"]
 
 [sub_resource type="FontFile" id="FontFile_w8lf4"]
 cache/0/16/0/ascent = 0.0
@@ -42,15 +42,20 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = -2.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2yojf")
+script = ExtResource("1_6crjc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.101961, 0.2, 0.262745, 1)
+metadata/_edit_lock_ = true
 
 [node name="Title" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -98,6 +103,7 @@ text = "Campaign"
 layout_mode = 2
 tooltip_text = "Play aganst AI in a scrimmage match"
 theme_override_fonts/font = SubResource("FontFile_ocg1e")
+disabled = true
 text = "Single Player"
 
 [node name="Multiplayer" type="Button" parent="Buttons/VBoxContainer"]
@@ -121,8 +127,8 @@ text = "Quit"
 
 [connection signal="pressed" from="Buttons/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Campaign" to="." method="_on_campaign_pressed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/Single" to="." method="_on_single_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Single" to="." method="_on_campaign_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/Single" to="." method="_on_single_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
