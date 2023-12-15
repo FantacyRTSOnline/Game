@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bc23fioj7niov"
-path="res://.godot/imported/TerrainSnow02.glb-64a002e741f234013aad1d1a03e67640.scn"
+path="res://.godot/imported/TerrainSnow02.glb-1265e4a5d1974c824b8bb2d24ab99f5a.scn"
 
 [deps]
 
-source_file="res://TerrainSnow02.glb"
-dest_files=["res://.godot/imported/TerrainSnow02.glb-64a002e741f234013aad1d1a03e67640.scn"]
+source_file="res://assets/maps/TerrainSnow02.glb"
+dest_files=["res://.godot/imported/TerrainSnow02.glb-1265e4a5d1974c824b8bb2d24ab99f5a.scn"]
 
 [params]
 
