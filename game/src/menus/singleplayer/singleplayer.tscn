@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3xm76wkue3xd"]
+
+[ext_resource type="Script" path="res://src/menus/singleplayer/singleplayer.gd" id="1_n08pg"]
+
+[node name="CreateGameSingle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n08pg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.101961, 0.2, 0.262745, 1)
+
+[node name="Start Button" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_left = 560.0
+offset_top = 248.0
+offset_right = 606.0
+offset_bottom = 288.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Start Button"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="Start Button/HBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Back Button" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 320.0
+offset_right = 605.0
+offset_bottom = 360.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Back Button"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Back Button/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="Start Button/HBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Back Button/HBoxContainer/Back" to="." method="_on_back_pressed"]

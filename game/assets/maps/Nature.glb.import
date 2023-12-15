@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bvtxjg5grf4ek"
-path="res://.godot/imported/Soldier.glb-ab8e17ffe199c8878a8f241cd903124c.scn"
+uid="uid://dn7yetlsr6lqj"
+path="res://.godot/imported/Nature.glb-329da8978cb8149d27e758c5944b956d.scn"
 
 [deps]
 
-source_file="res://assets/Soldier.glb"
-dest_files=["res://.godot/imported/Soldier.glb-ab8e17ffe199c8878a8f241cd903124c.scn"]
+source_file="res://assets/maps/Nature.glb"
+dest_files=["res://.godot/imported/Nature.glb-329da8978cb8149d27e758c5944b956d.scn"]
 
 [params]
 
