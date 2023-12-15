@@ -10,7 +10,7 @@ func _on_multiplayer_pressed():
 	pass # Replace with function body.
 
 func _on_single_pressed():
-	get_tree().change_scene_to_file("res://src/scenes/singleplayer/create_game_single.tscn")
+	get_tree().change_scene_to_file("res://src/scenes/singleplayer/singleplayer.tscn")
 
 func _on_options_pressed():
 	pass # Replace with function body.
