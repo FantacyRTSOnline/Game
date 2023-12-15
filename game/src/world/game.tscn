@@ -1,10 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://dx8yuv2qawv2a"]
 
-[ext_resource type="PackedScene" uid="uid://yfdyw7ibnerg" path="res://src/core/camera/camera.tscn" id="1_yx45g"]
+[ext_resource type="PackedScene" uid="uid://yfdyw7ibnerg" path="res://src/core/player/player_controller.tscn" id="1_yx45g"]
+[ext_resource type="PackedScene" uid="uid://dn7yetlsr6lqj" path="res://assets/maps/Nature.glb" id="2_emqne"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_tan5j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ihmwu"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0.27451, 0.462745, 0.658824, 1)
+sky_horizon_color = Color(0.678431, 1, 1, 1)
+ground_bottom_color = Color(0.898039, 0.862745, 0.827451, 1)
 
 [sub_resource type="Sky" id="Sky_x7632"]
 sky_material = SubResource("ProceduralSkyMaterial_ihmwu")
@@ -12,28 +16,34 @@ sky_material = SubResource("ProceduralSkyMaterial_ihmwu")
 [sub_resource type="Environment" id="Environment_g5ipm"]
 background_mode = 2
 sky = SubResource("Sky_x7632")
-tonemap_mode = 2
+ambient_light_source = 2
+ambient_light_color = Color(0.792157, 0.792157, 0.792157, 1)
+tonemap_mode = 3
+ssao_enabled = true
+ssil_radius = 1.0
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctxjk"]
-albedo_color = Color(0.337255, 0.415686, 0.235294, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_vqe7u"]
-size = Vector2(100, 100)
-
 [node name="Game" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_tan5j")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g5ipm")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0.433016, -0.399519, 0.808011, -0.250002, 0.808011, 0.533496, 0, 0, 0)
 shadow_enabled = true
 
 [node name="Camera3D" parent="." instance=ExtResource("1_yx45g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84423, 29.3194)
-fov = 100.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
-[node name="Ground" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_ctxjk")
-mesh = SubResource("PlaneMesh_vqe7u")
+[node name="Nature" parent="." instance=ExtResource("2_emqne")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+
+[node name="Node" parent="Nature" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.666667, 0)
+
+[editable path="Nature"]
