@@ -10,7 +10,7 @@ The game is a 3D real-time strategy (RTS) game inspired by Supreme Commander 2 b
 
 ## Features
 ### Single-Player Prototype (Phase 1)
-- 3d orbital camera (rts style)
+- 3d orbital camera (RTS style)
 - Base-building mechanics
 - Unit selection, movement, attack
 - Basic AI opponents for single-player battles
@@ -22,16 +22,22 @@ The game is a 3D real-time strategy (RTS) game inspired by Supreme Commander 2 b
 - Peer-to-peer multiplayer mode implementation using Steamworks SDK
 - Online battles between players
 - Enhanced base-building, unit management, and combat for multiplayer
-- Additional quality of life improvements based on single-player feedback
+- Additional quality-of-life improvements based on single-player feedback
 - Expanded unit research, upgrades, and multiplayer-specific mechanics
 
 ## Core Gameplay Mechanics
 - **Base Building**: Constructing structures for resource collection, unit production, and defense.
 - **Unit Management**: Selecting, grouping, and controlling various fantasy units (dragons, demons, etc.).
 - **Combat System**: Real-time battles with strategic depth, unit abilities, and counters.
-- **Resource Management**: Gathering and managing resources for construction and unit production.
+- **Resource Management**: Gathering and managing construction and unit production resources.
 - **Unit Research and Upgrades**: Advancing unit capabilities and unlocking new abilities.
 - **AI Support**: Robust AI systems for offline and multiplayer battles, including base-building, unit control, and strategic decision-making.
+
+## Economy Mechanics
+- **Primary Resource:** Mana
+- **Technology Upgrade Resource:** Soul Knowledge
+- **Energy:** Kinetic Crystals
+- **Player trade:** Trading Station
 
 ## Technical Requirements
 - 3D modeling and animation for fantasy units and environments
