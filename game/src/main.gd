@@ -10,7 +10,7 @@ func _on_multiplayer_pressed() -> void:
 	pass
 
 func _on_single_pressed() -> void:
-	pass
+	get_tree().change_scene_to_file("res://src/world/game.tscn")
 
 func _on_options_pressed() -> void:
 	pass

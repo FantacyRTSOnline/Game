@@ -98,7 +98,6 @@ text = "Campaign"
 layout_mode = 2
 tooltip_text = "Play aganst AI in a scrimmage match"
 theme_override_fonts/font = SubResource("FontFile_ocg1e")
-disabled = true
 text = "Single Player"
 
 [node name="Multiplayer" type="Button" parent="Buttons/VBoxContainer"]
