@@ -17,9 +17,17 @@ run/main_scene="res://src/menus/start/start_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Log="*res://addons/logger/logger.gd"
+
 [display]
 
 window/vsync/vsync_mode=2
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/logger/plugin.cfg")
 
 [importer_defaults]
 
