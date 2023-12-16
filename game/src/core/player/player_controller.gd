@@ -17,7 +17,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	print(screen_borders)
 
-func _input(event):
+func _input(event: InputEvent):
 	if event is InputEventMouseMotion:
 		mouse_pos = event.get_position()
 		mouse_pos_3d = raycast_from_mouse(mouse_pos, 1)
@@ -25,8 +25,11 @@ func _input(event):
 		velocity.y -= cam_speed * 2
 	if event.is_action_pressed("camera_zoom_out"):
 		velocity.y += cam_speed * 2
+	if event.is_action_pressed("camera_pan"):
+		# todo - move camera x/y based on the current position of the player
+		print("Panning")
 
-func _physics_process(delta):
+func _physics_process(delta: float):
 	screen_borders = Vector4(20, get_viewport().size.y - 20, get_viewport().size.x - 20, 20)
 	handle_controls(delta)
 	velocity *= delta
@@ -35,10 +38,10 @@ func _physics_process(delta):
 	velocity = lerp(velocity, Vector3.ZERO, delta * 17.5)
 	print(velocity)
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	pass
 
-func raycast_from_mouse(m_pos : Vector2, collision_mask):
+func raycast_from_mouse(m_pos : Vector2, collision_mask: int):
 	var ray_start = cam.project_ray_origin(m_pos)
 	var ray_end = ray_start + cam.project_ray_normal(m_pos) * 100 # 100 is a ray length
 	var world3d : World3D = get_world_3d()
@@ -60,6 +63,7 @@ func handle_controls(delta):
 	if direction:
 		velocity.x = direction.x * cam_speed
 		velocity.z = direction.y * cam_speed
+    
 	# i love spaghetti, at least it seams so
 	if mouse_pos.x < screen_borders.x:
 		velocity.x = cam_speed  * -1
