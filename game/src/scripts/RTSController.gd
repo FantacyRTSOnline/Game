@@ -4,10 +4,17 @@ const MOVE_MARGIN: int = 20
 const MOVE_SPEED: int = 15
 
 @onready var cam: Camera3D = $Camera3D
-var mouse_position := Vector2()
+@onready var mouse_position := Vector2()
 
 func _ready():
 	pass
+	
+func _input(event: InputEvent):
+	if event.is_action_pressed("wheel_down"):
+		cam.fov = lerp(cam.fov, 75.0, 0.25)
+	if event.is_action_pressed("wheel_up"):
+		cam.fov = lerp(cam.fov, 45.0, 0.25)
+	
 
 func _process(delta):
 	var m_pos := get_viewport().get_mouse_position()
