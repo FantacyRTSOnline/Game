@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://lasuk4kupsxq"]
+[gd_scene load_steps=11 format=3 uid="uid://lasuk4kupsxq"]
 
 [ext_resource type="Script" path="res://src/scripts/RTSController.gd" id="1_5rsic"]
 [ext_resource type="Material" uid="uid://d0i3q6j44jwns" path="res://assets/Materials/FloorMat.tres" id="1_kxjiw"]
+[ext_resource type="PackedScene" uid="uid://b2hw0dipnpg3h" path="res://src/scenes/units/stone_unit.tscn" id="3_mukvp"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_6iirr"]
 vertices = PackedVector3Array(-149.5, 0.5, -149.5, -149.5, 0.5, 149.5, 149.5, 0.5, 149.5, 149.5, 0.5, -149.5)
@@ -40,6 +41,7 @@ volumetric_fog_temporal_reprojection_amount = 0.99
 navigation_mesh = SubResource("NavigationMesh_6iirr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0121009, 0, -0.00161505)
 material_override = ExtResource("1_kxjiw")
 mesh = SubResource("PlaneMesh_opunl")
 
@@ -60,3 +62,8 @@ transform = Transform3D(1, 0, 0, 0, 0.429897, 0.902878, 0, -0.902878, 0.429897, 
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a1tvq")
+
+[node name="StoneUnit" parent="." instance=ExtResource("3_mukvp")]
+
+[node name="StoneUnit2" parent="." instance=ExtResource("3_mukvp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773478, 0, 0)
