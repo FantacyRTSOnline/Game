@@ -1,4 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://lasuk4kupsxq"]
+[gd_scene load_steps=7 format=3 uid="uid://lasuk4kupsxq"]
+
+[ext_resource type="Script" path="res://src/scripts/RTSController.gd" id="1_5rsic"]
+[ext_resource type="Material" uid="uid://d0i3q6j44jwns" path="res://assets/Materials/FloorMat.tres" id="1_kxjiw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_6iirr"]
 vertices = PackedVector3Array(-149.5, 0.5, -149.5, -149.5, 0.5, 149.5, 149.5, 0.5, 149.5, 149.5, 0.5, -149.5)
@@ -22,9 +25,20 @@ data = PackedVector3Array(150, 0, 150, -150, 0, 150, 150, 0, -150, -150, 0, 150,
 navigation_mesh = SubResource("NavigationMesh_6iirr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+material_override = ExtResource("1_kxjiw")
 mesh = SubResource("PlaneMesh_opunl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_juyx7")
+
+[node name="RTSController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0)
+script = ExtResource("1_5rsic")
+
+[node name="Camera3D" type="Camera3D" parent="RTSController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 17)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.429897, 0.902878, 0, -0.902878, 0.429897, 0, 26.0253, 0)
