@@ -60,7 +60,7 @@ func change_state(state: States):
 func move_to(target_pos: Vector3):
 	change_state(States.Walking)
 	var closest_pos := NavigationServer3D.map_get_closest_point(get_world_3d().get_navigation_map(), target_pos)
-	$NavigationAgent3D.set_target_location(closest_pos)
+	$NavigationAgent3D.set_target_position(closest_pos)
 
 func _on_navigation_agent_3d_target_reached() -> void:
 	change_state(States.Idle)

@@ -82,10 +82,6 @@ wheel_up={
 3d_physics/layer_5="Environment"
 3d_physics/layer_6="Resources"
 
-[physics]
-
-3d/run_on_separate_thread=true
-
 [rendering]
 
 driver/threads/thread_model=2

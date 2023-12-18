@@ -62,7 +62,7 @@ func handle_raycast_from_mouse(collision_mask: int) -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
 	
 	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end, collision_mask, [])
-	return space_state.intersect_ray(query)
+	return space_state.intersect_ray(query) 	
 
 func get_units_under_mouse():
 	var result_unit = handle_raycast_from_mouse(2) # 2 = the collision layer set for units
