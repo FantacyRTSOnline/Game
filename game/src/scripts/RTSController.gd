@@ -23,6 +23,9 @@ func _input(event: InputEvent) -> void:
 	
 
 func _process(delta) -> void:
+	if Input.is_action_just_pressed("command"):
+		move_selected_units()
+	
 	mouse_position = get_viewport().get_mouse_position()
 	handle_camera_movement(delta)
 	
@@ -52,7 +55,7 @@ func handle_camera_movement(delta: float) -> void:
 	
 	move_vec = move_vec.rotated(Vector3(0,1,0), rad_to_deg(rotation.y))
 	global_translate(move_vec * delta * MOVE_SPEED)
-
+	
 func handle_raycast_from_mouse(collision_mask: int) -> Dictionary:
 	var ray_start: Vector3 = cam.project_ray_origin(mouse_position)
 	var ray_end: Vector3 = ray_start + cam.project_ray_normal(mouse_position) * ray_length
@@ -89,3 +92,13 @@ func clean_current_units_and_apply_new(new_units) -> void:
 		unit.deselect()
 	for unit in new_units:
 		unit.select()
+
+func move_selected_units() -> void:
+	var layer = 0b100111
+	var result = handle_raycast_from_mouse(layer)
+	
+	if selected_units.size() != 0:
+		var first_unit = selected_units[0]
+		if result.collider.is_in_group("surface"):
+			first_unit.move_to(result.position)
+
