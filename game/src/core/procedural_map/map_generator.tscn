@@ -1,17 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://dugbwj7d8dytj"]
+[gd_scene load_steps=21 format=3 uid="uid://dugbwj7d8dytj"]
 
 [ext_resource type="Shader" path="res://src/core/procedural_map/map_generator.gdshader" id="1_d6gk7"]
-[ext_resource type="Texture2D" uid="uid://cif7yddrvsq1h" path="res://assets/textures/forest/forrest_ground_01_diff_2k.png" id="2_7pic3"]
-[ext_resource type="Texture2D" uid="uid://cvnur2h8oejmq" path="res://assets/textures/forest/forrest_ground_01_arm_2k.png" id="2_nk1qc"]
-[ext_resource type="Texture2D" uid="uid://6gauif5sov03" path="res://assets/textures/rocks/rock_surface_diff_2k.png" id="3_v6ye7"]
-[ext_resource type="Texture2D" uid="uid://deft7a61abgyt" path="res://assets/textures/forest/forrest_ground_01_nor_gl_2k.png" id="4_7xkej"]
-[ext_resource type="Texture2D" uid="uid://bskklpus6uy38" path="res://assets/textures/rocks/rock_surface_arm_2k.png" id="5_xi0sn"]
-[ext_resource type="Texture2D" uid="uid://b4ndj0jfl0m3x" path="res://assets/textures/rocks/rock_surface_nor_gl_2k.png" id="7_b301j"]
+[ext_resource type="Texture2D" uid="uid://grkhp3xeyfng" path="res://assets/textures/forest/Grass001_2K-PNG_Color.png" id="2_npxv7"]
+[ext_resource type="Texture2D" uid="uid://dk7pugkbwb78x" path="res://assets/textures/forest/Grass001_2K-PNG_NormalGL.png" id="3_3psmq"]
+[ext_resource type="Texture2D" uid="uid://dfpaocnec3il6" path="res://assets/textures/forest/Grass001_2K-PNG_Roughness.png" id="4_v66xe"]
+[ext_resource type="Texture2D" uid="uid://dhrwmos1aoi60" path="res://assets/textures/rocks/Rock050_2K-PNG_Color.png" id="5_afhkg"]
+[ext_resource type="Texture2D" uid="uid://dttjh1l4nrhis" path="res://assets/textures/rocks/Rock050_2K-PNG_NormalGL.png" id="6_uq86f"]
+[ext_resource type="Texture2D" uid="uid://bdgobq6irn5bc" path="res://assets/textures/rocks/Rock050_2K-PNG_Roughness.png" id="7_pm3ny"]
+[ext_resource type="Texture2D" uid="uid://c8nrs5d2qbjrk" path="res://assets/textures/sand/Ground033_2K-PNG_Color.png" id="8_hx73c"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_uejhp"]
 size = Vector2(1200, 1200)
-subdivide_width = 200
-subdivide_depth = 200
+subdivide_width = 250
+subdivide_depth = 250
 
 [sub_resource type="Gradient" id="Gradient_uj2xs"]
 interpolation_mode = 2
@@ -30,7 +31,7 @@ interpolation_mode = 2
 interpolation_color_space = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_eclxp"]
-frequency = 0.0003
+frequency = 0.0004
 fractal_octaves = 6
 fractal_lacunarity = 3.0
 fractal_weighted_strength = 0.16
@@ -48,8 +49,9 @@ noise = SubResource("FastNoiseLite_eclxp")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_5taq7"]
 noise_type = 2
-frequency = 0.0152
+frequency = 0.0097
 fractal_type = 3
+fractal_octaves = 10
 cellular_distance_function = 1
 cellular_jitter = 0.05
 cellular_return_type = 2
@@ -61,18 +63,30 @@ invert = true
 color_ramp = SubResource("Gradient_ciu43")
 noise = SubResource("FastNoiseLite_5taq7")
 
+[sub_resource type="Gradient" id="Gradient_6h4sk"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.285714, 0.571429, 0.857143)
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0.227451, 1, 1)
+metadata/_snap_count = 7
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h52hr"]
+gradient = SubResource("Gradient_6h4sk")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6orww"]
 render_priority = 0
 shader = ExtResource("1_d6gk7")
-shader_parameter/uv_scale = 20.0
-shader_parameter/land_color = ExtResource("2_7pic3")
-shader_parameter/land_arm = ExtResource("2_nk1qc")
-shader_parameter/land_normal = ExtResource("4_7xkej")
-shader_parameter/mountain_color = ExtResource("3_v6ye7")
-shader_parameter/mountain_arm = ExtResource("5_xi0sn")
-shader_parameter/mountain_normal = ExtResource("7_b301j")
+shader_parameter/uv_scale = 30.0
+shader_parameter/sand_color = ExtResource("8_hx73c")
+shader_parameter/land_color = ExtResource("2_npxv7")
+shader_parameter/land_normal = ExtResource("3_3psmq")
+shader_parameter/land_roughness = ExtResource("4_v66xe")
+shader_parameter/mountain_color = ExtResource("5_afhkg")
+shader_parameter/mountain_normal = ExtResource("6_uq86f")
+shader_parameter/mountain_roughness = ExtResource("7_pm3ny")
 shader_parameter/border_mask = SubResource("GradientTexture2D_d66m3")
-shader_parameter/intensity = 60.0
+shader_parameter/splat_map = SubResource("GradientTexture1D_h52hr")
+shader_parameter/intensity = 50.0
 shader_parameter/sea_level = 0.4
 shader_parameter/mountains_level = 0.7
 shader_parameter/heightmap = SubResource("NoiseTexture2D_36vym")
