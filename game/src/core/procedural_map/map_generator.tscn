@@ -1,0 +1,85 @@
+[gd_scene load_steps=18 format=3 uid="uid://dugbwj7d8dytj"]
+
+[ext_resource type="Shader" path="res://src/core/procedural_map/map_generator.gdshader" id="1_d6gk7"]
+[ext_resource type="Texture2D" uid="uid://cif7yddrvsq1h" path="res://assets/textures/forest/forrest_ground_01_diff_2k.png" id="2_7pic3"]
+[ext_resource type="Texture2D" uid="uid://cvnur2h8oejmq" path="res://assets/textures/forest/forrest_ground_01_arm_2k.png" id="2_nk1qc"]
+[ext_resource type="Texture2D" uid="uid://6gauif5sov03" path="res://assets/textures/rocks/rock_surface_diff_2k.png" id="3_v6ye7"]
+[ext_resource type="Texture2D" uid="uid://deft7a61abgyt" path="res://assets/textures/forest/forrest_ground_01_nor_gl_2k.png" id="4_7xkej"]
+[ext_resource type="Texture2D" uid="uid://bskklpus6uy38" path="res://assets/textures/rocks/rock_surface_arm_2k.png" id="5_xi0sn"]
+[ext_resource type="Texture2D" uid="uid://b4ndj0jfl0m3x" path="res://assets/textures/rocks/rock_surface_nor_gl_2k.png" id="7_b301j"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uejhp"]
+size = Vector2(1200, 1200)
+subdivide_width = 200
+subdivide_depth = 200
+
+[sub_resource type="Gradient" id="Gradient_uj2xs"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.295082, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d66m3"]
+gradient = SubResource("Gradient_uj2xs")
+use_hdr = true
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_4h6wj"]
+interpolation_mode = 2
+interpolation_color_space = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eclxp"]
+frequency = 0.0003
+fractal_octaves = 6
+fractal_lacunarity = 3.0
+fractal_weighted_strength = 0.16
+domain_warp_amplitude = 15.0
+domain_warp_fractal_lacunarity = 10.425
+domain_warp_fractal_gain = 3.01
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_36vym"]
+width = 2048
+height = 2048
+color_ramp = SubResource("Gradient_4h6wj")
+noise = SubResource("FastNoiseLite_eclxp")
+
+[sub_resource type="Gradient" id="Gradient_ciu43"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5taq7"]
+noise_type = 2
+frequency = 0.0152
+fractal_type = 3
+cellular_distance_function = 1
+cellular_jitter = 0.05
+cellular_return_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gdxq5"]
+width = 1024
+height = 1024
+invert = true
+color_ramp = SubResource("Gradient_ciu43")
+noise = SubResource("FastNoiseLite_5taq7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6orww"]
+render_priority = 0
+shader = ExtResource("1_d6gk7")
+shader_parameter/uv_scale = 20.0
+shader_parameter/land_color = ExtResource("2_7pic3")
+shader_parameter/land_arm = ExtResource("2_nk1qc")
+shader_parameter/land_normal = ExtResource("4_7xkej")
+shader_parameter/mountain_color = ExtResource("3_v6ye7")
+shader_parameter/mountain_arm = ExtResource("5_xi0sn")
+shader_parameter/mountain_normal = ExtResource("7_b301j")
+shader_parameter/border_mask = SubResource("GradientTexture2D_d66m3")
+shader_parameter/intensity = 60.0
+shader_parameter/sea_level = 0.4
+shader_parameter/mountains_level = 0.7
+shader_parameter/heightmap = SubResource("NoiseTexture2D_36vym")
+shader_parameter/mountains = SubResource("NoiseTexture2D_gdxq5")
+
+[node name="map" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_uejhp")
+surface_material_override/0 = SubResource("ShaderMaterial_6orww")
