@@ -12,6 +12,9 @@ var selected_units: Array = []
 var old_selected_units: Array = []
 var start_sel_position := Vector2()
 
+@onready var selection_box: Node = $UnitSelector
+const MAX_SELECTED_UNITS: int = 100
+
 func _ready() -> void:
 	pass
 	
@@ -25,14 +28,19 @@ func _input(event: InputEvent) -> void:
 func _process(delta) -> void:
 	if Input.is_action_just_pressed("command"):
 		move_selected_units()
-	
-	mouse_position = get_viewport().get_mouse_position()
-	handle_camera_movement(delta)
-	
 	if Input.is_action_just_pressed("select"):
+		selection_box.start_pos = mouse_position
 		start_sel_position = mouse_position
+	if Input.is_action_pressed("select"):
+		selection_box.start_pos = mouse_position
+		selection_box.is_visable = true
+	else:
+		selection_box.is_visable = false
 	if Input.is_action_just_released("select"):
 		select_units()
+		
+	mouse_position = get_viewport().get_mouse_position()
+	handle_camera_movement(delta)
 
 func handle_camera_movement(delta: float) -> void:
 	var viewport_size: Vector2 = get_viewport().size
@@ -81,6 +89,8 @@ func select_units() -> void:
 	if mouse_position.distance_squared_to(start_sel_position) < 16:
 		if main_unit != null:
 			selected_units.append(main_unit)
+	else:
+		selected_units = get_units_in_box(start_sel_position, mouse_position)
 	
 	if selected_units.size() != 0:
 		clean_current_units_and_apply_new(selected_units)
@@ -102,3 +112,23 @@ func move_selected_units() -> void:
 		if result.collider.is_in_group("surface"):
 			first_unit.move_to(result.position)
 
+func get_units_in_box(top_left: Vector2, bottom_right: Vector2):
+	if top_left.x > bottom_right.x:
+		var temp = top_left.x
+		top_left.x = bottom_right.x
+		bottom_right.x = temp
+	if top_left.y > bottom_right.y:
+		var temp = top_left.y
+		top_left.y = bottom_right.y
+		bottom_right.y = temp
+	
+	var box = Rect2(top_left, bottom_right - top_left)
+	var box_selected_units = []
+	
+	for unit in get_tree().get_nodes_in_group("unts"):
+		if unit.team and box.has_point(cam.unproject_position(unit.global_transform.orgin)):
+			# Only allow 100 units to be selected at a time by the player
+			if box_selected_units.size() < MAX_SELECTED_UNITS:
+				box_selected_units.append(unit)
+				
+	return box_selected_units

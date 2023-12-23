@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://lasuk4kupsxq"]
+[gd_scene load_steps=12 format=3 uid="uid://lasuk4kupsxq"]
 
 [ext_resource type="Script" path="res://src/scripts/RTSController.gd" id="1_5rsic"]
 [ext_resource type="Material" uid="uid://d0i3q6j44jwns" path="res://assets/Materials/FloorMat.tres" id="1_kxjiw"]
 [ext_resource type="PackedScene" uid="uid://b2hw0dipnpg3h" path="res://src/scenes/units/stone_unit.tscn" id="3_mukvp"]
+[ext_resource type="Script" path="res://src/scripts/UnitSelector.gd" id="3_spsmo"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_6iirr"]
 vertices = PackedVector3Array(-149.5, 0.5, -149.5, -149.5, 0.5, 149.5, 149.5, 0.5, 149.5, 149.5, 0.5, -149.5)
@@ -56,6 +57,13 @@ script = ExtResource("1_5rsic")
 
 [node name="Camera3D" type="Camera3D" parent="RTSController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 17)
+
+[node name="UnitSelector" type="Control" parent="RTSController"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_spsmo")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.429897, 0.902878, 0, -0.902878, 0.429897, 0, 26.0253, 0)
