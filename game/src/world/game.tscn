@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dx8yuv2qawv2a"]
+[gd_scene load_steps=6 format=3 uid="uid://dx8yuv2qawv2a"]
 
 [ext_resource type="PackedScene" uid="uid://yfdyw7ibnerg" path="res://src/core/player/player_controller.tscn" id="1_yx45g"]
-[ext_resource type="PackedScene" uid="uid://dugbwj7d8dytj" path="res://src/core/procedural_map/map_generator.tscn" id="2_ebmuc"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_lgqqx"]
 rayleigh_color = Color(0.298039, 0.403922, 0.596078, 1)
@@ -40,5 +39,3 @@ shape = SubResource("WorldBoundaryShape3D_tan5j")
 
 [node name="Camera3D" parent="." instance=ExtResource("1_yx45g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-
-[node name="map" parent="." instance=ExtResource("2_ebmuc")]
