@@ -29,7 +29,8 @@ func _input(event: InputEvent):
 		desired_velocity.y -= cam_speed * 2 * global_delta
 	if event.is_action_pressed("camera_zoom_out"):
 		desired_velocity.y += cam_speed * 2 * global_delta
-
+	if event.is_action_pressed("mouse_left"):
+		print(mouse_pos_3d)
 func _physics_process(delta: float):
 	global_delta = delta
 	screen_borders = Vector4(20, get_viewport().size.y - 20, get_viewport().size.x - 20, 20)
