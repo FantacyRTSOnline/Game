@@ -7,9 +7,9 @@
 [node name="Player controller" type="CharacterBody3D"]
 motion_mode = 1
 script = ExtResource("1_wpaed")
-cam_speed = 75.0
-zoom_in_limit = -5.0
-zoom_out_limit = 25.0
+cam_speed = 200.0
+zoom_in_limit = 100.0
+zoom_out_limit = 200.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 visible = false

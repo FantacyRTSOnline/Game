@@ -30,6 +30,10 @@ window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
 
+[dotnet]
+
+project/assembly_name="FantasyRtsOnline"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/logger/plugin.cfg")
@@ -77,7 +81,19 @@ camera_pan={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(79, 17),"global_position":Vector2(83, 58),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+mouse_left={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(175, 21),"global_position":Vector2(179, 62),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
 
 [rendering]
 
 anti_aliasing/quality/msaa_3d=3
+
+[shader_globals]
+
+seed={
+"type": "float",
+"value": 0.0
+}
